@@ -1,0 +1,41 @@
+ ### Summary of Mermaid.js Syntax Rules for Sequence Diagrams
+
+#### Basic Structure and Execution
+- **Execution**: Use `Ctrl + Enter` to run the sequence diagram code.
+- **Participants**: Participants can be defined implicitly or explicitly using various statements like `actor`, `boundary`, `control`, `entity`, `database`, `collection`, `queue`.
+- **Order of Participants**: Participants are rendered in the order they appear in the source text unless specified otherwise (e.g., with `participant` keyword).
+
+#### Explicit Definition of Participants
+- **Actors**: Use `actor` statements to define participants as actors.
+- **Boundary, Control, Entity, Database, Collection, Queue**: These are defined similarly but specify different symbols for the participant type: boundary, control flow element; entity, database table or file; and collection, queue respectively.
+
+#### Grouping Participants
+- **Grouping**: Participants can be grouped using `box` statements with optional color and description labels.
+- **Transparent Groups**: Use `transparent` to make group backgrounds transparent.
+
+#### Messages
+- **Basic Message Syntax**: Two participants connected by an arrow (`-->`) represents a message.
+- **Message Types**: Supports various types of arrows including solid, dotted, with/without arrowheads, and bidirectional.
+- **Line Breaks in Messages**: Use `:` to include line breaks within messages.
+
+#### Activations and Notes
+- **Activations**: Participants can be activated using `+` or deactivated using `-`.
+- **Notes**: Notes can be added over participants (`over`), to the right/left of participants, or spanning two participants.
+
+#### Advanced Constructs
+- **Loops**: Use `loop` statements to indicate loops in sequences.
+- **Alternatives**: Express alternative paths with `alt` and `else`.
+- **Parallelism**: Show actions happening in parallel using `par`.
+- **Critical Regions**: Highlight critical actions with `critical`.
+- **Break Statements**: Indicate exceptions or stops within flows using `break`.
+
+#### Styling and Configuration
+- **Styling**: Sequence diagrams support CSS classes for styling. Classes include those for actors, messages, notes, loops, etc.
+- **Configuration**: Parameters like `mirrorActors`, `diagramMarginX`, `messageMargin` can be adjusted in the configuration settings.
+
+#### Special Features
+- **Sequence Numbers**: Optionally display sequence numbers on message arrows.
+- **Actor Menus**: Actors can have popup menus with links to external pages.
+- **Escaping Characters**: Use special codes to escape characters like semicolons within messages.
+
+This summary covers the basic syntax and features for creating Sequence Diagrams using Mermaid.js, including how to define participants, manage message flows, add annotations, and customize the appearance of the diagrams.

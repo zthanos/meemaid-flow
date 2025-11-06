@@ -1,0 +1,70 @@
+ ### Summary of Mermaid.js Architecture Diagram Syntax for v11.1.0+
+
+#### Basic Structure and Keywords
+- **Keywords**: `architecture-beta`, `group`, `service`, `edge`, `junction`
+- **Commands**: Use `Ctrl + Enter` to run the diagram code in Mermaid Chart.
+
+#### Building Blocks
+1. **Groups**
+   - Syntax: `group {group id}({icon name})[{title}] (in {parent id})?`
+   - Example: `group public_api(cloud)[Public API]` creates a group with an identifier, icon, and title.
+   
+2. **Services**
+   - Syntax: `service {service id}({icon name})[{title}] (in {parent id})?`
+   - Example: `service database1(database)[My Database]` creates a service with an identifier, icon, and title.
+   
+3. **Edges**
+   - Syntax: Edge from `{serviceId}{{group}}?:{T|B|L|R} {<}?--{>}? {T|B|L|R}:{serviceId}{{group}}?`
+   - Example: `db:R -- L:server` specifies an edge direction and sides.
+   
+4. **Junctions**
+   - Syntax: `junction {junction id} (in {parent id})?`
+   - Example: `junction junction1 in groupOne` creates a junction within a parent group.
+
+#### Common Patterns and Examples
+- **Groups**: Groups can be nested using the optional `in` keyword.
+  ```mermaid
+  architecture-beta
+    group public_api(cloud)[Public API]
+    group private_api(cloud)[Private API] in public_api
+  ```
+  
+- **Services**: Services can belong to groups and specify icons and titles.
+  ```mermaid
+  architecture-beta
+    group backend(server)[Backend Services]
+    service database1(database)[My Database] in backend
+  ```
+  
+- **Edges**: Edges connect services with specified directions.
+  ```mermaid
+  architecture-beta
+    service db[Database]
+    service server[Server]
+    db:R -- L:server
+  ```
+  
+- **Junctions**: Junctions allow for complex edge routing.
+  ```mermaid
+  architecture-beta
+    group network(cloud)[Network Services]
+    junction junction1 in network
+    service web_service1[Web Service] in network
+    service db_service1(database)[Database Service] in network
+    web_service1 --|> junction1: Direct Edge
+    junction1 --> db_service1: Junction Edge
+  ```
+
+#### Important Rules and Constraints
+- **Order of Declaration**: Each component (group, service, edge) must be declared after it has been referenced by another component.
+- **Icons and Labels**: Icons and labels can be specified using parentheses around the icon name and square brackets around the title.
+- **Edge Directions**: Specify the side of a service where an edge comes out using `:` followed by direction (`T|B|L|R`).
+- **Group Modifiers**: Use `{group}` to specify edges between groups or services within groups.
+- **Junctions**: Used for complex routing, declared with `junction {junction id} (in {parent id})?`.
+
+#### Icons and Customization
+- Default icons include: cloud, database, disk, internet, server.
+- Use any icon from [Iconify](https://iconify.design/) or register custom icons to use in diagrams.
+- Format for using icons: `"name:icon-name"` where `name` is the registered icon pack value.
+
+This summary provides a concise overview of Mermaid.js's syntax and usage for creating architecture diagrams, focusing on groups, services, edges, junctions, and icons.

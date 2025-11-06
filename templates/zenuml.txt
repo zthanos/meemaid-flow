@@ -1,0 +1,85 @@
+ ### Summary of Mermaid.js Syntax Rules for ZenUML Diagrams
+
+#### Basic Structure
+- **Participants**: Defined implicitly or explicitly using annotators like `participantName as Alias`.
+- **Messages**: Types include sync (blocking), async (non-blocking), creation, and reply messages.
+- **Nesting**: Enclosed in curly braces `{}` for nested structures.
+- **Comments**: Added with `// comment` syntax, rendered above or alongside elements.
+
+#### Key Commands and Keywords
+- **Participants**: Defined using annotators like `participantName as Alias`.
+- **Messages**: Types include:
+  - Sync message (blocking)
+  - Async message (non-blocking)
+  - Creation message (using `new`)
+  - Reply messages (`@return` for returning to one level up).
+- **Annotations**: Use annotators like `participantName as Alias`.
+- **Loops**: Implemented using `while`, `for`, `forEach, foreach`.
+- **Alternatives**: Handled with `if-else` constructs.
+- **Options**: Rendered with `opt { ... }`.
+- **Parallelism**: Shown with `par { statement1; statement2; statement3; }`.
+- **Exception Handling**: Indicated by `try`, `catch`, and `finally` blocks.
+
+#### Common Patterns and Examples
+- **Basic Diagram**: Shows participants and messages in sequence.
+  ```mermaid
+  sequenceDiagram
+    participant A as Alias1
+    participant B as Alias2
+    A->>B: Sync message
+    B-->>A: Reply message
+  ```
+- **Loops and Conditions**: Demonstrates nested structures and conditions.
+  ```mermaid
+  sequenceDiagram
+    participant A
+    participant B
+    loop Daily Loop
+        A->>B: Async message
+        B-->>A: Reply message
+    end
+    if (Condition1)
+        A->>B: Sync message
+    else if (Condition2)
+        A->>B: Another sync message
+    else
+        A->>B: Default case
+    end if
+  ```
+- **Parallel Execution**: Shows concurrent actions.
+  ```mermaid
+  sequenceDiagram
+    participant P1
+    participant P2
+    par (Parallel Actions)
+        P1->>P2: Action 1
+        P2-->>P1: Action 2
+    and
+        P1->>P2: Action 3
+        P2-->>P1: Action 4
+    end
+  ```
+- **Exception Handling**: Illustrates error management.
+  ```mermaid
+  sequenceDiagram
+    participant Client
+    participant Server
+    try
+        Client->>Server: Request
+        Server->>Client: Response
+    catch (Error)
+        Client->>Server: Retry request
+        Server-->>Client: Error response
+    finally
+        Client->>Server: Cleanup
+        Server-->>Client: Confirm cleanup
+    end
+  ```
+
+#### Important Rules and Constraints
+- **Order of Participants**: Appear in the order defined in the source text. Explicit ordering is possible with annotators.
+- **Comments**: Must be prefixed by `//` and are rendered above or alongside elements.
+- **Nesting**: Enables complex structures but must be balanced correctly for readability.
+- **Experimental Features**: ZenUML uses experimental features like lazy loading and async rendering, which may change in the future.
+
+This summary provides a concise overview of the syntax rules for creating ZenUML diagrams with Mermaid.js, suitable for generating sequence diagrams with detailed interactions and control structures.

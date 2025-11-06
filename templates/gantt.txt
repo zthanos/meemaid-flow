@@ -1,0 +1,44 @@
+ ### Summary of Mermaid.js Syntax Rules for Gantt Diagrams
+
+#### Basic Structure
+- **Title**: Optional string at the top of the chart to describe the whole chart.
+- **Section Statements**: Divide the chart into sections using `section` keyword followed by a name (required).
+- **Comments**: Ignored by the parser, prefaced with `%%`.
+
+#### Key Commands and Keywords
+- **Tasks**: Represented as bars on the Gantt chart.
+  - Syntax: `taskID : title [: metadata]`
+    - Metadata includes optional tags (`active`, `done`, `crit`, `milestone`) and other details like start date, end date, duration, etc.
+- **Milestones**: Represent a single instant in time, identified by the keyword `milestone`.
+  - Syntax: `milestone : milestone title [: metadata]`
+- **Vertical Markers**: Visual reference points for important dates using `vert` keyword.
+  - Syntax: `vert date [label]`
+- **Excludes**: Dates to be marked on the graph and excluded from duration calculation (e.g., `excludes 2023-10-15, weekends`).
+
+#### Common Patterns and Examples
+- **Basic Task**: `A : task one`
+- **Task with Metadata**: `B : another task : active, done`
+- **Milestone**: `milestone : project milestone`
+- **Vertical Marker**: `vert 2023-10-15 : deadline`
+- **Section Division**: `section Development`
+- **Comments**: `%% This is a comment`
+
+#### Important Rules and Constraints
+- **Metadata Syntax**: Colon (`:`) separates the task title from its metadata. Comma (`,`) separates metadata items.
+  - Valid tags include `active`, `done`, `crit`, `milestone`.
+- **Date Formatting**: Use `dateFormat` to define input date format, and `axisFormat` for output date format on the axis.
+- **Task Dependencies**: Metadata can reference other tasks using `after <taskID>`.
+  - Example: `C : task C : after B, 3d`
+- **Compact Mode**: Enable with `displayMode: 'compact'` in configuration.
+- **Styling**: Customize using CSS classes defined in `src/diagrams/gantt/styles.js`.
+
+#### Additional Features
+- **Weekend Configuration**: Define weekend start day (`weekday`) and configure weekends (default is Saturday and Sunday).
+- **Interactive Tasks**: Add click events to tasks for JavaScript callbacks or URL links.
+  - Example: `click cl1 href "https://example.com"`
+
+#### Examples
+- **Simple Gantt Chart**: Shows basic task scheduling without metadata.
+- **Complex Gantt Chart**: Includes sections, milestones, vertical markers, and interactive elements.
+
+This summary provides a concise overview of the syntax rules for creating Gantt diagrams using Mermaid.js, suitable for project planning and visualization.

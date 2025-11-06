@@ -1,0 +1,52 @@
+ ### Summary of Mermaid.js Syntax Rules for Entity Relationship Diagrams (ERDs)
+
+#### Basic Structure
+- **Entities**: Represented by singular nouns and are mandatory in every statement.
+- **Relationships**: Defined using lines with end markers representing cardinality.
+- **Syntax**: Consists of `<first-entity> [<relationship> <second-entity> : <relationship-label>]`.
+  - Example: `PROPERTY ||--|{ ROOM : contains`
+
+#### Key Commands and Keywords
+- **Entities**: Names are often capitalized but not required; support any Unicode characters.
+- **Relationships**: Use cardinality markers (`oo`, `}o{`, etc.) to describe the number of instances.
+- **Attributes**: Can be added to entities with type and name, e.g., `{color: red, size: large}`.
+- **Unicode Text**: Supported for entity names, relationships, and attributes.
+- **Markdown Formatting**: Supported within statements (not for keys or comments).
+
+#### Common Patterns and Examples
+- **Basic Entity Relationship**: 
+  ```mermaid
+  CUSTOMER ||--o{ ORDER : places
+  ORDER ||--|{ LINE-ITEM : contains
+  ```
+- **Attributes on Entities**:
+  ```mermaid
+  ENTITY {
+    name: John Doe
+    age: 30
+    email: john.doe@example.com
+  }
+  ```
+- **Cardinality and Relationships**:
+  ```mermaid
+  PERSON ||--o{ CAR : owns
+  CAR ||--|{ TIRE : has
+  ```
+
+#### Important Rules and Constraints
+- **Relationship Labels**: Typically read from the perspective of the first entity (e.g., `A contains B`).
+- **Cardinality Markers**: Outer character represents maximum, inner represents minimum values.
+- **Directionality**: Can be specified using `TB`, `BT`, `RL`, or `LR`.
+- **Styling**: Nodes can have specific styles applied, including border thickness and background color.
+- **Layout**: Default is Dagre; ELK layout can be configured via YAML frontmatter.
+
+#### Additional Features
+- **Class Definitions**: For applying consistent styling to multiple nodes (e.g., `classDef className fill:#f9f,...`).
+- **Shorthand Syntax**: For attaching classes to nodes and relationships (`nodeId:::className1,className2`).
+- **Default Class**: Applies styles to all nodes without specific class definitions.
+
+#### Configuration
+- **Layout Options**: Default is Dagre; ELK layout can be specified in YAML frontmatter.
+- **Version Requirement**: Mermaid version 9.4+ with lazy-loading configuration enabled for ERD rendering.
+
+This summary provides a comprehensive overview of the syntax and features supported by Mermaid.js for creating Entity Relationship Diagrams, suitable for both technical documentation and diagram generation purposes.

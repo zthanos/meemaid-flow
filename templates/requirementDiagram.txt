@@ -1,0 +1,67 @@
+ ### Summary of Mermaid.js Syntax for Requirement Diagrams (RequirementDiagram)
+
+#### Basic Structure
+- **Components**: A Requirement Diagram consists of three main components - requirements, elements, and relationships.
+- **Syntax Components**: Each component has a specific syntax defined by enumerated keywords and user input.
+
+#### Requirement Component
+- **Definition**: Requirements are defined using curly braces `{}` with properties like type, name, id, text, risk, and verification method.
+- **Example**:
+  ```mermaid
+  requirement test_req {
+    id: req123
+    text: User must be able to login
+    risk: Medium
+    verifymethod: Test
+  }
+  ```
+- **Keywords**: Types include `requirement`, `functionalRequirement`, etc. Risks are categorized as `Low`, `Medium`, `High`. Verification methods can be `Analysis`, `Inspection`, `Test`, or `Demonstration`.
+
+#### Element Component
+- **Definition**: Elements are defined with a name, type, and document reference.
+- **Example**:
+  ```mermaid
+  element test_elem {
+    type: SoftwareComponent
+    docref: Document123
+  }
+  ```
+
+#### Relationship Component
+- **Definition**: Relationships connect source nodes to destination nodes with specified types like `contains`, `derives`, etc.
+- **Example**:
+  ```mermaid
+  test_req - contains -> test_elem
+  ```
+- **Types**: Common relationship types include `contains`, `copies`, `derives`, `satisfies`, `verifies`, `refines`, and `traces`.
+
+#### Diagram Direction
+- **Options**: Diagrams can be rendered in four directions: `TB` (Top to Bottom, default), `BT` (Bottom to Top), `LR` (Left to Right), `RL` (Right to Left).
+- **Example**:
+  ```mermaid
+  direction TB
+  ```
+
+#### Styling
+- **Direct Styling**: Apply CSS styles directly using the `style` keyword.
+- **Class Definitions**: Reusable styles can be defined with `classDef`. The default class applies to all nodes, and specific styles should override it.
+- **Example**:
+  ```mermaid
+  classDef default fill:#f9f,stroke:#333,stroke-width:4px;
+  requirement test_req:::important {
+    id: 1
+    text: class styling example
+    risk: low
+    verifymethod: test
+  }
+  ```
+
+#### Common Patterns and Examples
+- **Larger Example**: Combines all features with multiple requirements, elements, and relationships.
+- **Direction Usage**: Demonstrates how to set the diagram direction for layout customization.
+- **Styling**: Shows how to apply direct styles and class definitions for visual differentiation of nodes.
+
+#### Important Rules and Constraints
+- **Input Guidelines**: User input should be carefully managed; avoid using keywords within unquoted text as it may cause parsing errors.
+- **Keyword Usage**: Ensure all defined components use the correct enumerated keywords and syntax to maintain diagram integrity.
+- **Diagram Rendering**: The direction specified in the diagram settings will affect how nodes are arranged, affecting readability and clarity of the visualization.

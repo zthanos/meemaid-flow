@@ -1,0 +1,53 @@
+ ### Summary of Mermaid.js Syntax Rules for DiagramType.USER_JOURNEY Diagrams
+
+#### Basic Structure
+- **User Journey Diagrams** describe user workflows within systems, applications, or websites.
+- Each diagram is divided into sections, each representing a part of the task users are trying to complete.
+- The syntax includes:
+  - `Task name` followed by a colon (`:`).
+  - A score (a number between 1 and 5) followed by a colon (`:`).
+  - A comma-separated list of actors involved in that section of the task.
+
+#### Key Commands and Keywords
+- **Code Block**: Enclose Mermaid code within triple backticks (\`\`\`) or use the `Ctrl + Enter` shortcut to render.
+- **Run Button**: Use the "Run ▶" button to visualize the diagram.
+
+#### Common Patterns and Examples
+1. **Basic Task Representation**:
+   ```mermaid
+   userJourney
+       title My User Journey
+       
+       section Part 1: Register
+       1: John, Mary
+       2: Alice
+       
+       section Part 2: Login
+       3: John
+       4: Bob
+   ```
+
+2. **Detailed Task with Scores**:
+   ```mermaid
+   userJourney
+       title Complex User Journey
+       
+       section Part 1: Register
+       1: [5] John, Mary
+       2: [3] Alice
+       
+       section Part 2: Login
+       3: [4] John
+       4: [2] Bob
+   ```
+
+#### Important Rules and Constraints
+- **Task Name**: Followed by a colon (`:`), e.g., `Register`.
+- **Score**: A number between 1 and 5, inclusive, followed by a colon (`:`). Scores help prioritize or rate the importance of each section.
+- **Actors**: Listed after the score in square brackets if needed, separated by commas. For example: `[5] John, Mary` indicates that both John and Mary are involved at a high level of detail (score 5).
+
+#### Usage Notes
+- Ensure clarity in identifying key tasks and actors for each section of the user journey.
+- Use scores to highlight critical or frequently used paths within the workflow.
+
+This summary provides a concise overview suitable for generating User Journey diagrams using Mermaid.js, focusing on basic syntax, common usage patterns, and important guidelines.

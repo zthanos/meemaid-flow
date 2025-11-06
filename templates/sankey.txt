@@ -1,0 +1,45 @@
+ ### Summary of Mermaid.js Sankey Diagram Syntax Rules
+
+#### Basic Structure
+- **Sankey Diagrams** are used to depict flows from one set of values to another.
+- The syntax starts with the keyword `sankey` followed by raw CSV data for nodes and links.
+
+#### Key Commands and Keywords
+- **Keyword**: `sankey` - Initiates the Sankey diagram.
+- **CSV Requirement**: Must contain exactly 3 columns: source, target, and value.
+- **Empty Lines**: Empty lines without commas are not supported by default in CSV; use them for visual purposes if needed.
+- **Commas**: If a comma is required within data, wrap it in double quotes.
+- **Double Quotes**: To include a double quote inside a string, enclose it with another pair of double quotes.
+
+#### Common Patterns and Examples
+- **Basic CSV Format**:
+  ```plaintext
+  sankey
+  source,target,value
+  A,B,5
+  B,C,10
+  C,D,7
+  ```
+- **Customizing Layout**:
+  ```html
+  <script>
+  const config = {
+    startOnLoad: true,
+    securityLevel: 'loose',
+    sankey: {
+      width: 800,
+      height: 400,
+      linkColor: 'source', // Options: source, target, gradient, hex code like #a1a1a1
+      nodeAlignment: 'left', // Options: justify, center, left, right
+    },
+  };
+  mermaid.initialize(config);
+  </script>
+  ```
+
+#### Important Rules and Constraints
+- **CSV Columns**: The CSV must have exactly three columns labeled as source, target, and value.
+- **Experimental Nature**: Sankey diagrams are experimental and may undergo changes in the future.
+- **Customization Options**: Allows customization of link colors, node alignments, and diagram dimensions.
+
+This summary provides a clear overview of how to create and customize Sankey diagrams using Mermaid.js, focusing on syntax rules and practical examples for easy reference.

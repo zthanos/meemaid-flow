@@ -1,0 +1,98 @@
+ ### Summary of Mermaid.js Syntax Rules for C4 Diagrams
+
+#### Basic Structure and Keywords
+- **Basic Syntax**: The syntax is based on Mermaid's diagramming capabilities, using specific keywords and commands to define the diagrams.
+- **Keywords**: Commonly used terms include `Person`, `System`, `Container`, `Component`, `Deployment_Node`, `Rel`, etc., which are used to construct the diagrams.
+
+#### Key Commands and Keywords
+- **C4 Context Diagram (C4Context)**: Defines system boundaries, people interacting with systems, and external systems.
+  - **Person**: Represents users or external entities.
+  - **System**: Represents software systems.
+- **Container Diagram (C4Container)**: Details the internal structure of a system, showing containers within components.
+  - **Container**: Represents modules or services within a component.
+- **Component Diagram (C4Component)**: Shows the individual components that make up a container.
+  - **Component**: Specific units of code with well-defined interfaces and behaviors.
+- **Dynamic Diagram (C4Dynamic)**: Illustrates interactions between components over time.
+  - **RelIndex**: Defines relationships between dynamic elements.
+- **Deployment Diagram (C4Deployment)**: Shows the physical deployment of systems on nodes.
+  - **Deployment_Node**: Represents physical servers or devices where software is deployed.
+
+#### Common Patterns and Examples
+- **Person(alias, label, ?descr, ?sprite, ?tags, $link)**: Defines a person with optional description, sprite, tags, and link.
+  - Example: `Person("Customer", "Bank Customer", "A customer of the bank", "user", "", "")`
+  
+- **System(alias, label, ?descr, ?sprite, ?tags, $link)**: Defines a system with optional description, sprite, tags, and link.
+  - Example: `System("Online_Banking_System", "Online Banking System", "Handles online transactions", "server", "", "")`
+  
+- **Container(alias, label, ?techn, ?descr, ?sprite, ?tags, $link)**: Defines a container within a component.
+  - Example: `Container("ATM_Service", "ATM Service", "Java", "Handles ATM transactions", "smartcard", "", "")`
+  
+- **Component(alias, label, ?techn, ?descr, ?sprite, ?tags, $link)**: Defines individual components within a container.
+  - Example: `Component("Transaction_Processor", "Transaction Processor", "Spring Boot", "Processes transactions", "code", "", "")`
+  
+- **Rel(from, to, label, ?techn, ?descr, ?sprite, ?tags, $link)**: Defines relationships between elements.
+  - Example: `Rel("Customer", "ATM_Service", "Uses")`
+
+#### Important Rules and Constraints
+- **Layout and Style**: The layout is not fully automated; shapes are positioned based on the order of statements. Layout commands like `UpdateLayoutConfig` can adjust row configurations but do not support fully automatic layouts.
+- **Style Customization**: Styles such as colors, shapes, and line styles can be customized using specific commands (`UpdateElementStyle`, `UpdateRelStyle`) which also affect legend entries.
+- **Parameter Assignment**: Parameters can be assigned in two ways: positional or named with `$` prefix.
+  - Example of named parameters: `UpdateRelStyle(customerA, bankA, $offsetX="-40", $offsetY="60", $lineColor="blue", $textColor="red")`
+  
+- **Compatibility**: The C4 syntax is compatible with PlantUML and shares many features. However, some specific features like sprite support are not yet implemented.
+
+#### Examples of Diagram Types
+- **C4Context**: Defines system boundaries, people interacting with systems, and external systems.
+  ```mermaid
+  C4Context
+    title System Context diagram for Internet Banking Application
+    Person(customerA, "Bank Customer", "A customer of the bank")
+    System_Boundary(bnd1, "Internet Banking System") {
+        System(bankA, "Banking System", "Handles all online banking transactions")
+        Rel(customerA, bankA, "uses")
+    }
+  ```
+  
+- **C4Container**: Details the internal structure of a system.
+  ```mermaid
+  C4Container
+    title Container diagram for Internet Banking Application
+    System_Boundary(bnd1, "Internet Banking System") {
+        Container(atmSvc, "ATM Service", "Java", "Handles ATM transactions")
+        Container(transProc, "Transaction Processor", "Spring Boot", "Processes transactions")
+        Rel(atmSvc, transProc, "calls")
+    }
+  ```
+  
+- **C4Component**: Shows individual components within a container.
+  ```mermaid
+  C4Component
+    title Component diagram for Internet Banking Application
+    System_Boundary(bnd1, "Internet Banking System") {
+        Component(transProc, "Transaction Processor", "Spring Boot", "Processes transactions")
+        Component(authSvc, "Authentication Service", "Java", "Handles authentication")
+        Rel(transProc, authSvc, "uses")
+    }
+  ```
+  
+- **C4Dynamic**: Illustrates interactions between components over time.
+  ```mermaid
+  C4Dynamic
+    title Dynamic diagram for Internet Banking Application
+    System_Boundary(bnd1, "Internet Banking System") {
+        RelIndex(0, transProc, authSvc, "calls")
+        RelIndex(1, authSvc, transProc, "authenticates")
+    }
+  ```
+  
+- **C4Deployment**: Shows the physical deployment of systems on nodes.
+  ```mermaid
+  C4Deployment
+    title Deployment diagram for Internet Banking Application
+    Deployment_Node(serverA, "Server", "Physical server hosting the system") {
+        Node(dbSvr, "Database Server", "Type: Database", "Deploys database components")
+        Rel(serverA, dbSvr, "runs on")
+    }
+  ```
+
+This summary provides a concise overview of Mermaid.js syntax rules for C4 diagrams, focusing on basic structure, key commands, common patterns, and important rules.

@@ -1,0 +1,108 @@
+ ### Summary of Mermaid.js Syntax for GitGraph Diagrams
+
+#### Basic Structure and Usage
+- **Declaration**: Begin by declaring the diagram type using `gitgraph` keyword. This tells Mermaid to parse the code as a Git graph.
+- **Default Branch**: The default branch is initialized as 'main' (formerly called 'master').
+- **Commit Declaration**: Use `commit` keyword to declare commits, optionally providing an ID and type attributes.
+- **Branch Creation**: Use `branch` keyword to create new branches. New branches are set as the current branch automatically.
+- **Branch Switching**: Use `checkout` keyword to switch to existing branches.
+- **Merging Branches**: Use `merge` keyword to merge one branch into another, creating a merge commit.
+- **Cherry Picking**: Use `cherry-pick` keyword to bring specific commits from other branches onto the current branch.
+
+#### Key Commands and Keywords
+- **commit**: Registers a new commit on the current branch.
+  - Attributes: `id`, `type`, `tag`
+- **branch**: Creates a new branch and sets it as the current branch.
+  - Usage: `branch "new_branch_name"`
+- **checkout**: Switches to an existing branch.
+  - Usage: `checkout "existing_branch_name"`
+- **merge**: Merges one branch into another, creating a merge commit.
+  - Attributes: `id`, `tag`, `type`
+- **cherry-pick**: Brings specific commits from other branches onto the current branch.
+  - Usage: `cherry-pick id: "commit_id"`
+
+#### Common Patterns and Examples
+1. **Basic Git Graph with Default Branch:**
+   ```mermaid
+   gitgraph
+       commit
+       commit
+       commit
+   ```
+2. **Adding Custom IDs to Commits:**
+   ```mermaid
+   gitgraph
+       commit id: "commit_1"
+       commit id: "commit_2"
+       commit id: "commit_3"
+   ```
+3. **Creating and Switching Branches:**
+   ```mermaid
+   gitgraph
+       branch new_branch
+       checkout new_branch
+       commit
+       commit
+       checkout main
+   ```
+4. **Merging Branches with Custom Attributes:**
+   ```mermaid
+   gitgraph
+       commit
+       commit
+       branch develop
+       commit
+       checkout main
+       merge develop id: "merge_commit" tag: "release" type: REVERSE
+   ```
+5. **Cherry Picking Commits:**
+   ```mermaid
+   gitgraph
+       commit
+       commit
+       cherry-pick id: "commit_id_from_other_branch"
+   ```
+
+#### Important Rules and Constraints
+- **Branch Names**: Must be unique and not conflict with existing branch names or Mermaid keywords.
+- **Commit IDs**: Should correspond to actual commits in the repository; otherwise, errors will occur.
+- **Cherry Picking**: Requires specifying an existing commit ID from another branch. The specified parent commit must exist on the merge commit being cherry-picked.
+- **Theme Variables**: Support customization of up to 8 branches using theme variables. Beyond this limit, variables are reused cyclically.
+
+#### Configuration Options
+- **showBranches**: Controls visibility of branch names and lines (default is true).
+- **showCommitLabel**: Controls visibility of commit labels (default is true).
+- **mainBranchName**: Sets the name of the default/root branch (default is 'main').
+- **parallelCommits**: Allows commits to be shown at the same level if they are a certain distance away from their parent.
+
+#### Examples of Configuration
+1. **Hiding Branch Names and Lines:**
+   ```mermaid
+   gitgraph
+       showBranches: false
+       commit
+       commit
+   ```
+2. **Rotating Commit Labels:**
+   ```mermaid
+   gitgraph
+       rotateCommitLabel: true
+       commit
+       commit
+   ```
+3. **Customizing Main Branch Name:**
+   ```mermaid
+   gitgraph
+       mainBranchName: "MetroLine1"
+       commit
+       commit
+   ```
+4. **Setting Orientation to Top-to-Bottom:**
+   ```mermaid
+   gitgraph
+       TB: true
+       commit
+       commit
+   ```
+
+This summary provides a concise overview of the syntax and usage for GitGraph diagrams in Mermaid, suitable for generating visual representations of Git branching strategies and operations.

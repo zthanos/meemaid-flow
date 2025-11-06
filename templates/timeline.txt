@@ -1,0 +1,40 @@
+ ### Summary of Mermaid.js Timeline Diagram Syntax Rules
+
+#### Basic Structure
+- **Start with `timeline` keyword**: Begins any timeline diagram.
+- **Title (optional)**: Use `title` followed by the title text to add a title to the timeline.
+- **Time Period and Event**: Each entry starts with a time period, followed by a colon (`:`), then one or more events separated by colons if needed.
+  ```markdown
+  {time period} : {event} : {event} ...
+  ```
+
+#### Grouping Time Periods
+- **Sections (optional)**: Use `section` followed by the section name to group time periods under a specific section.
+  ```markdown
+  section Section Name
+  {time period} : {event}
+  ```
+- **Default Behavior**: If no sections are defined, all time periods will be placed in a default section with individual color schemes for each time period and its events.
+
+#### Text Wrapping
+- **Automatic wrapping**: Long text for time periods or events is automatically wrapped to fit within the diagram.
+- **Line breaks**: Use `<br>` to force line breaks in text.
+
+#### Styling
+- **Color Scheme**: Each section has a color scheme, and each time period and event under a section follow similar colors.
+- **Customization**: 
+  - Use `cScale0` to `cScale11` for background colors (up to 12 sections).
+  - Use `cScaleLabel0` to `cScaleLabel11` for foreground colors.
+  - Default values can be overridden using `mermaid.initialize`.
+- **Themes**: Mermaid supports multiple themes with different color schemes. Themes can be changed via initialization settings or directives.
+
+#### Integration
+- **Lazy Loading**: Timeline uses experimental lazy loading and async rendering, which may change in future releases.
+- **Web Page Implementation**: Include timeline diagrams using the following script:
+  ```html
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  </script>
+  ```
+
+This summary covers the basic syntax and rules for creating Timeline diagrams with Mermaid.js, including optional features like sections, text wrapping, styling, and theme customization.

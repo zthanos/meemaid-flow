@@ -1,0 +1,59 @@
+ ### Basic Syntax Structure for Flowcharts in Mermaid.js
+
+- **Nodes and Edges**: Flowcharts are composed of nodes (geometric shapes) and edges (arrows or lines).
+- **Mermaid Code**: Defines how nodes and edges are made using basic syntax like `graph TD`, where `T` stands for "top" and `D` for "down".
+
+### Key Commands and Keywords
+
+- **Direction Declaration**: `direction TB/TD/BT/LR/RL` sets the flowchart orientation.
+- **Node Shapes**: Various shapes available (`round`, `stadium`, `subroutine`, etc.) are defined using specific syntax.
+- **Unicode Text**: Enclosed in double quotes, e.g., `"📈"` for a chart increasing.
+- **Markdown Formatting**: Use backticks and double quotes for formatted text within nodes.
+- **Subgraphs**: Defined using `subgraph title; graph definition; end`.
+- **Comments**: Prefaced with `%%` on their own line, ignored by the parser.
+
+### Common Patterns and Examples
+
+- **Basic Flowchart Example**:
+  ```mermaid
+  flowchart TD
+      A[Start] --> B{Is it?}
+      B -->|Yes| C[OK]
+      C --> D[Right]
+      B -->|No| E[Wrong]
+  ```
+- **Node with Unicode and Markdown**:
+  ```mermaid
+  flowchart TD
+      A["Start 🚀"] --> B{Is it?}
+  ```
+- **Subgraph Example**:
+  ```mermaid
+  subgraph one
+    direction TB
+    A[Start] --> B{Is it?}
+    B -->|Yes| C[OK]
+  end
+  ```
+
+### Important Rules and Constraints
+
+- **Capitalization of "end"**: Ensure "end" is capitalized or use workarounds for lowercase usage.
+- **Special Characters in Node Text**: Add spaces before letters 'o' or 'x' to avoid special edge types (circle/cross).
+- **New Shapes and Styling**: Introduced in Mermaid v11.3.0, these features enhance diagram clarity and precision.
+  - **Custom Icons and Images**: Use `img` for images and `icon` for icons with specific properties like label and position.
+  - **Animation on Edges**: Assign IDs to edges and enable animations using class definitions or CSS classes.
+- **Links Between Nodes**: Supports various link types, text annotations, and special characters are escaped properly.
+- **Subgraphs and Directions**: Subgraphs can have their direction set explicitly; however, external links override subgraph directions.
+- **Markdown Strings**: Enhance node labels with formatting options like bold and italics, auto-wrapping text within nodes.
+
+### Configuration and Styling
+
+- **Renderer Options**: Default is `dagre`, but `elk` can be used for larger or more complex diagrams (experimental).
+- **Width Adjustment**: Configured via `mermaid.flowchartConfig` in JavaScript or CLI JSON file.
+- **CSS Classes**: Define styles once and apply them to multiple nodes, edges, or subgraphs using class definitions.
+- **FontAwesome Support**: Icons can be added using `fa:fa-icon-name#`. Custom icons require FontAwesome kit registration.
+
+### Conclusion
+
+Mermaid.js provides a flexible syntax for creating flowcharts with detailed node shapes, edge types, and styling options. Understanding the basic structure, key commands, and constraints will help in effectively utilizing Mermaid for documentation and diagramming purposes.

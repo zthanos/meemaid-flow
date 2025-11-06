@@ -1,0 +1,40 @@
+ ### Summary of Mermaid.js Syntax Rules for DiagramType.STATE_DIAGRAM Diagrams
+
+#### Basic Structure and Key Commands
+- **Basic State Definition**: States can be defined simply with an ID (e.g., `Still`), or more descriptively using the `state` keyword followed by a description (e.g., `state Still "Your state with spaces in it"`).
+- **Transitions**: Defined using `-->`, and optionally include text to describe what the transition represents (e.g., `Still --> Moving: To moving state`).
+- **Special States**: Start (`[*]`) and End states are defined using specific syntax, where transitions into these states determine if they act as a start or end point.
+
+#### Common Patterns and Examples
+- **Simple State Diagram Example**:
+  ```mermaid
+  graph TD;
+      A[Start] --> B{Is it?};
+      B -->|Yes| C[Result1];
+      B -->|No| D[Result2];
+      C --> E[End];
+      D --> E;
+  ```
+- **Composite States**: Nested states can be defined using `{}` (e.g., `state Composite {Still} --> Moving`).
+- **Choice and Fork**: Use `<</>>`, `<<fork>>`, and `<<join>>` to model choices and concurrency.
+- **Styling with ClassDefs**: Define styles using `classDef` for states, which can be applied globally or dynamically within the diagram (e.g., `classDef movement font-style:italic;`).
+
+#### Important Rules and Constraints
+- **State Definitions**: States must have unique IDs. Descriptive state definitions are possible but not necessary for basic functionality.
+- **Transitions**: Ensure all referenced states are defined before transitions involving them. Undefined states in a transition will be created with the ID from the transition.
+- **Special States**: Start (`[*]`) and End states are automatically recognized based on transition direction.
+- **Composite States**: Nested states can be used to model complex systems, but transitions between internal states of different composite states are not allowed.
+- **Styling Limitations**: ClassDef styles cannot be applied directly to start or end states or within composite states. Future updates may lift these limitations.
+- **Comments**: Comments in diagrams should be prefaced with `%%` and will be ignored by the parser.
+
+#### Example Diagram Code Snippet
+```mermaid
+graph TD;
+    A[Start] --> B{Is it?};
+    B -->|Yes| C[Result1];
+    B -->|No| D[Result2];
+    C --> E[End];
+    D --> E;
+```
+
+This summary provides a concise overview of the syntax and rules for creating state diagrams using Mermaid.js, suitable for generating complex system behavior models within documentation or presentations.

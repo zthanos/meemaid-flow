@@ -1,0 +1,80 @@
+ ### Summary of Mermaid.js Syntax for Quadrant Charts
+
+#### Basic Structure and Usage
+- **Purpose**: A quadrant chart is used to plot data points on a two-dimensional grid divided into four quadrants. It helps in identifying patterns and trends in data by prioritizing actions based on the position of data points within the chart.
+- **Basic Syntax**: The syntax involves setting titles, axes labels, and quadrants with specific text or classes for styling.
+
+#### Key Commands and Keywords
+1. **Title**: Sets a title at the top of the chart.
+   - Example: `title This is a sample example`
+2. **X-axis**: Defines the label on the x-axis.
+   - Syntax: `x-axis <left_text> --> <right_text>`
+   - Examples: 
+     - `x-axis Left Text --> Right Text`
+     - `x-axis Left Only`
+3. **Y-axis**: Defines the label on the y-axis.
+   - Syntax: `y-axis <bottom_text> --> <top_text>`
+   - Examples: 
+     - `y-axis Bottom Text --> Top Text`
+     - `y-axis Bottom Only`
+4. **Quadrants**: Sets text for each quadrant.
+   - Syntax: `quadrant-<number> <text>`
+   - Example: `quadrant-1 This is top right`
+5. **Points**: Plots circles inside the quadrants with coordinates ranging from 0 to 1.
+   - Syntax: `<point_name>: [x, y]`
+   - Example: `Point A: [0.75, 0.80]`
+
+#### Common Patterns and Examples
+- **Basic Chart Setup**:
+  ```mermaid
+  quadrantChart
+    title This is a sample example
+    x-axis Left Text --> Right Text
+    y-axis Bottom Text --> Top Text
+    quadrant-1 This is top right
+    quadrant-2 This is top left
+    quadrant-3 This is bottom left
+    quadrant-4 This is bottom right
+    Point A: [0.75, 0.80]
+    Point B: [0.35, 0.24]
+  ```
+- **Styled Points**:
+  ```mermaid
+  quadrantChart
+    title Styled Points Example
+    x-axis Left Text --> Right Text
+    y-axis Bottom Text --> Top Text
+    quadrant-1 This is top right
+    quadrant-2 This is top left
+    quadrant-3 This is bottom left
+    quadrant-4 This is bottom right
+    Point A: [0.75, 0.80] radius: 12
+    Point B: [0.8, 0.1] color: #ff3300, radius: 10
+    Point C: [0.7, 0.2] radius: 25, color: #00ff33, stroke-color: #10f0f0
+  ```
+- **Using Classes for Styling**:
+  ```mermaid
+  classDef class1 color: #109060
+  classDef class2 color: #908342, radius : 10, stroke-color: #310085, stroke-width: 10px
+  classDef class3 color: #f00fff, radius : 10
+  
+  quadrantChart
+    title Styled Points with Classes
+    x-axis Left Text --> Right Text
+    y-axis Bottom Text --> Top Text
+    quadrant-1 This is top right
+    quadrant-2 This is top left
+    quadrant-3 This is bottom left
+    quadrant-4 This is bottom right
+    Point A:::class1: [0.9, 0.0]
+    Point B:::class2: [0.8, 0.1]
+    Point C:::class3: [0.7, 0.2]
+  ```
+
+#### Important Rules and Constraints
+- **Axis Labels**: X and Y axis labels can be set to display either both parts or just one part (left/right for x-axis, top/bottom for y-axis).
+- **Quadrant Text**: Each quadrant can have specific text associated with it.
+- **Points**: Points are plotted within the quadrants based on their coordinates (x, y), where values range from 0 to 1.
+- **Styling**: Points and axis labels can be styled directly or through predefined classes. The order of preference for styling is direct styles, followed by class styles, and then theme variables.
+
+This summary provides a concise overview of the Mermaid.js syntax specifically tailored for creating quadrant charts, including basic setup, key commands, common patterns, and important rules.

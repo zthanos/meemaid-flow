@@ -1,0 +1,39 @@
+ ### Summary of Mermaid.js Packet Diagram Syntax (v11.0.0+)
+
+#### Introduction
+- **Packet Diagrams** are visual representations used to illustrate the structure and contents of network packets.
+- These diagrams are particularly useful for understanding and representing the structure of network packets, which are fundamental units of data transferred over a network.
+
+#### Usage
+- Targeted at developers, network engineers, educators, and students who need a clear and concise way to represent packet structures.
+
+#### Basic Syntax Structure
+- **Title Line**: The first line after `packet` defines the title of the diagram.
+- **Field Definitions**: Subsequent lines define different fields within the packet using bit ranges or specific counts.
+  - **Single-bit blocks**: Defined with a single colon (`:`), e.g., `start: "Block name"`.
+  - **Multi-bit blocks**: Defined with a dash and colon (`:-`), e.g., `start-end: "Block name"`.
+  - **Bit Counts**: Introduced in v11.7.0, allow setting the number of bits automatically, e.g., `+8: "Block name"`.
+
+#### Key Commands and Keywords
+- **packet**: Command to start a new packet diagram.
+- **start**, **start-end**: Define single or multi-bit blocks without manual bit counting.
+- **+<count>**: Automatically set the number of bits for a block, starting from the end of the previous field.
+- **"Block name"**: Description of the data block within the packet.
+
+#### Common Patterns and Examples
+- Example:
+  ```mermaid
+  packet
+    start: "Source MAC Address" +8
+    +12: "VLAN Tag"
+    16-23: "Source IP Address"
+    24-31: "Destination IP Address"
+    32-95: "Payload Data"
+  ```
+
+#### Important Rules and Constraints
+- **Bit Ranges**: The range (e.g., `0-15`) indicates the bit positions in the packet.
+- **Field Description**: Each line after the title should include a brief description of what the field represents, enclosed in quotes.
+- **Configuration**: Refer to the configuration guide for detailed settings and options specific to Mermaid Chart configurations.
+
+This summary provides a clear overview of how to use Mermaid.js to create packet diagrams, including syntax rules and common usage patterns.

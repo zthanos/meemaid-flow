@@ -1,0 +1,31 @@
+ ### Summary of Mermaid.js Syntax Rules for Sequence Diagrams
+
+#### Basic Structure
+- **Participants**: Participants can be defined implicitly or explicitly using various symbols (actor, boundary, control, entity, database, collections, queue).
+- **Ordering**: Participants are rendered in the order they appear in the diagram source text. Custom ordering is possible by specifying actor orders.
+
+#### Key Commands and Keywords
+- **Actors**: Define participants with specific roles like actors, boundaries, controls, entities, databases, etc.
+- **Messages**: Communication between participants represented as arrows (`-->`, `->>`, `<-->>`, etc.).
+- **Activations**: Activate or deactivate actors using messages prefixed with `+` or `-`.
+- **Groups**: Group actors vertically with optional colors and labels using `box` syntax.
+- **Notes**: Add notes to diagrams for additional information, positioned relative to participants (`Note [right of | left of | over] [Actor]: Text`).
+
+#### Common Patterns and Examples
+- **Loops**: Express loops in sequence diagrams using `loop` keyword followed by loop text and statements enclosed in `end`.
+- **Alternatives**: Show alternative paths with `alt` and `else` keywords.
+- **Parallelism**: Represent parallel actions using `par` followed by action statements.
+- **Critical Regions**: Highlight critical actions with optional handling for circumstances (`critical`).
+- **Break Statements**: Indicate exceptions or stops in sequences using `break`.
+- **Background Highlighting**: Use `rect` to highlight specific parts of the diagram with colors defined using RGB or RGBA syntax.
+
+#### Important Rules and Constraints
+- **Escaping Characters**: Use escape characters for special symbols within messages (e.g., use `#59;` for a semicolon).
+- **Sequence Numbers**: Optionally display sequence numbers on arrows by configuring Mermaid settings.
+- **Actor Menus**: Add popup menus to actors with links to external pages using `link` syntax.
+- **Styling**: Customize appearance using CSS classes defined in the `sequence.scss` file or via JSON configuration.
+
+#### Configuration Options
+- Adjust margins and diagram rendering parameters through `mermaid.sequenceConfig` or CLI settings.
+
+This summary provides a comprehensive overview of Mermaid.js syntax for creating sequence diagrams, covering basic structure, key commands, common patterns, and important rules and constraints.

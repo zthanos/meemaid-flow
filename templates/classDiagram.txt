@@ -1,0 +1,61 @@
+ ### Summary of Mermaid.js Syntax Rules for Class Diagrams
+
+#### Basic Structure
+- **Class Definition**: Classes are defined using `class` keyword or relationships (e.g., `Vehicle <|-- Car`).
+- **Naming Convention**: Class names should be alphanumeric, include underscores and dashes.
+
+#### Key Commands and Keywords
+- **Attributes and Methods**: Attributes are defined without parentheses; methods have parentheses.
+- **Visibility**: Visibility can be specified using `+` for public, `-` for private, `#` for protected, and `~` for package/internal.
+- **Annotations**: Annotations like `<|Interface>` or `<|Abstract>` can be added to classes.
+- **Return Type**: Methods can specify return types (e.g., `someMethod() int`).
+- **Generic Types**: Generic types are denoted with tilde (`~`), e.g., `List<int>`.
+
+#### Common Patterns and Examples
+- **Define a Class**: 
+  ```mermaid
+  class Animal {
+    +age: int
+    +gender: String
+    +isMammal(): boolean
+    +mate(): void
+  }
+  ```
+- **Attributes and Methods**:
+  ```mermaid
+  class Duck {
+    +beakColor: String
+    +swim(): void
+    +quack(): void
+  }
+  ```
+- **Relationships**:
+  ```mermaid
+  Animal <|-- Duck
+  ```
+- **Labels on Relations**:
+  ```mermaid
+  Animal -->[*] ClassB: LabelText
+  ```
+- **Cardinality/Multiplicity**:
+  ```mermaid
+  [classA] "1" [Arrow] "0..*" [ClassB]
+  ```
+
+#### Important Rules and Constraints
+- **Syntax Requirements**: Proper use of brackets, parentheses, and visibility symbols.
+- **Naming Conventions**: Class names should be meaningful and follow the specified pattern.
+- **Annotations**: Annotations like `<<Interface>>` or `<<Abstract>>` are used to describe class types.
+- **Visibility**: Specifies access levels (public, private, protected).
+- **Return Types**: Methods can specify data types returned by functions.
+- **Generic Types**: Supports nested generic types but not those with commas.
+- **Relationships**: Various relationship types like inheritance, composition, aggregation are supported.
+- **Labels and Comments**: Additional text can be added as labels or comments within diagrams.
+- **Styling**: Classes can be styled individually using CSS classes or predefined styles.
+
+#### Advanced Features
+- **Interaction**: Nodes can have click events linked to URLs or JavaScript callbacks.
+- **CSS Styling**: Predefined CSS classes can style entire groups of nodes.
+- **Configuration**: Options like `hideEmptyMembersBox` can modify diagram appearance.
+
+This summary provides a comprehensive overview of the syntax and usage for creating class diagrams using Mermaid.js, suitable for generating UML diagrams in software engineering documentation or code repositories.

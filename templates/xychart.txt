@@ -1,0 +1,69 @@
+ ### Summary of Mermaid.js Syntax Rules for DiagramType.XYCHART Diagrams
+
+#### Basic Syntax Structure
+- All diagrams begin with a declaration specifying the diagram type (e.g., `erDiagram`, `flowchart`).
+- Definitions follow the declaration and include entities, nodes, edges, and other elements specific to the diagram type.
+
+#### Key Commands and Keywords
+- **Directives**: Used within `%%{ ... }%%` to configure or modify diagrams post-declaration (e.g., theme settings).
+- **Frontmatter**: Metadata in YAML format preceding the diagram definition for configuration before rendering.
+- **Comments**: Ignored by the parser, prefixed with `%%`.
+
+#### Common Patterns and Examples
+1. **Basic Flowchart Example**:
+   ```mermaid
+   graph TD;
+       A[Start] --> B{Decision};
+       B -->|Yes| C[Process 1];
+       B -->|No| D[Process 2];
+       C --> E[End];
+       D --> E;
+   ```
+
+2. **State Diagram with Directives**:
+   ```mermaid
+   %%{init: {'theme': 'base', 'themeVariables': {}}}%%
+   stateDiagram-v2
+   [*] --> Still
+   Still --> [*]
+   Still --> Moving
+   Moving --> Still
+   Moving --> Crash
+   Crash --> [*]
+   ```
+
+3. **Entity Relationship Diagram**:
+   ```mermaid
+   erDiagram
+   CUSTOMER ||--o{ ORDER : places
+   ORDER ||--|{ LINE-ITEM : contains
+   LINE-ITEM }|--|| PRODUCT : includes
+   ```
+
+#### Important Rules and Constraints
+1. **Error Handling**: Misspellings or unknown words will break diagrams silently.
+2. **Comments**: Use `%%` for comments to ignore lines after them.
+3. **Directives and Frontmatter**: Used for configuration before rendering, must be correctly formatted (e.g., YAML syntax).
+4. **Diagram Types**: Each diagram type has specific keywords and configurations that must be followed accurately.
+
+#### Configuration Options
+- **Themes**: Directives can change themes to alter color schemes.
+- **Layouts**: Supports Dagre (default) and ELK layouts, configurable via directives in frontmatter or initialize call.
+- **Looks**: Custom styles like 'hand-drawn' or 'classic' can be selected using directives in the metadata section of diagram code.
+
+#### Example Configuration
+```mermaid
+---
+config:
+  layout: elk
+  elk:
+    mergeEdges: true
+    nodePlacementStrategy: LINEAR_SEGMENTS
+---
+flowchart LR
+A[Start] --> B{Choose Path}
+B -->|Option 1| C[Path 1]
+B -->|Option 2| D[Path 2]
+```
+
+This summary provides a concise overview of the syntax and configuration options available for creating XYCHART diagrams with Mermaid.js, including examples and important rules to follow for successful diagram generation.

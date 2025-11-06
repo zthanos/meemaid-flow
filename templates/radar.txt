@@ -1,0 +1,71 @@
+ ### Summary of Mermaid.js Syntax Rules for Radar Diagrams
+
+#### Introduction
+- **Radar Diagram**: A circular format used to plot low-dimensional data, known as radar charts, spider charts, star charts, etc.
+- **Usage**: Ideal for summarizing and comparing performance across multiple dimensions, commonly used by developers, data scientists, and engineers.
+
+#### Basic Syntax Structure
+- **Title**: Optional field to add a title at the top of the diagram.
+  ```mermaid
+  title Title of the Radar Diagram
+  ```
+  
+- **Axis**: Defined using the `axis` keyword with an ID and optional label. Multiple axes can be defined on a single line.
+  ```mermaid
+  axis id1["Label1"]
+  axis id2["Label2"], id3["Label3"]
+  ```
+
+- **Curve**: Data points for each curve are defined using the `curve` keyword, with an ID, optional label, and list of values. Values can be numbers or key-value pairs where keys represent axis IDs and values represent data points.
+  ```mermaid
+  curve c1{1,2,3,4,5}
+  curve c2{5,4,3,2,1}
+  ```
+
+#### Key Commands and Keywords
+- **axis**: Defines the axes of the radar diagram with IDs and optional labels.
+- **curve**: Defines data points for each curve in the radar diagram, including an ID, optional label, and list of values (numbers or key-value pairs).
+- **title**: Adds a title to the radar diagram.
+- **showLegend**: Controls the display of the legend; shown by default.
+- **max**/**min**: Set the maximum and minimum values for scaling the radar diagram.
+- **graticule**: Defines the type (circle or polygon) of graticule to be rendered.
+- **ticks**: Specifies the number of ticks on the graticule.
+
+#### Common Patterns and Examples
+- Basic Radar Diagram:
+  ```mermaid
+  title Example Radar Chart
+  axis A, B, C, D, E
+  curve c1{1,2,3,4,5}
+  curve c2{5,4,3,2,1}
+  ```
+  
+- Customizing with Options:
+  ```mermaid
+  title Example Radar Chart
+  axis A, B, C, D, E
+  curve c1{1,2,3,4,5}
+  curve c2{5,4,3,2,1}
+  showLegend true
+  max 100
+  min 0
+  graticule circle
+  ticks 5
+  ```
+
+#### Important Rules and Constraints
+- Ensure that the number of values in each curve matches the number of axes defined.
+- The `axis` keyword must be used before defining any curves.
+- Customizing options like colors, fonts, and styles can be done using theme variables as shown in the configuration guide.
+
+#### Configuration Parameters
+- **width**/**height**: Set the dimensions of the radar diagram.
+- **marginTop**/**marginBottom**/**marginLeft**/**marginRight**: Define margins around the diagram.
+- **axisScaleFactor**/**axisLabelFactor**: Adjust scale and label positions for axes.
+- **curveTension**: Controls the tension in rounded curves.
+
+#### Theme Variables
+- Global theme variables can be overridden to customize colors, fonts, etc., using `themeVariables` in the configuration.
+- Specific radar style options are set within the `radar` key under `themeVariables`.
+
+This summary provides a concise overview of the syntax and usage for creating Radar diagrams with Mermaid.js, including examples and important rules to follow.

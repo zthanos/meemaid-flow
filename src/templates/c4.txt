@@ -1,0 +1,86 @@
+### Summary of Mermaid.js Syntax Rules for C4 Diagrams
+
+#### Basic Syntax Structure
+- **Diagram Initialization**: Start with `mermaid` followed by the diagram type.
+  ```mermaid
+  mermaid
+  ```
+
+#### Key Commands and Keywords
+- **System Context (C4Context)**:
+  - `Person(alias, label, ?descr, ?sprite, ?tags, $link)`: Defines a person interacting with the system.
+  - `System(alias, label, ?descr, ?sprite, ?tags, $link)`: Defines a system.
+  - `Rel(from, to, label, ?techn, ?descr, ?sprite, ?tags, $link)`: Defines a relationship between elements.
+
+- **Container Diagram (C4Container)**:
+  - `System(alias, label, ?descr, ?sprite, ?tags, $link)`: Defines a system.
+  - `Container(alias, label, ?techn, ?descr, ?sprite, ?tags, $link)`: Defines a container within a system.
+  - `Rel(from, to, label, ?techn, ?descr, ?sprite, ?tags, $link)`: Defines a relationship between containers.
+
+- **Component Diagram (C4Component)**:
+  - `Container(alias, label, ?techn, ?descr, ?sprite, ?tags, $link)`: Defines a container.
+  - `Component(alias, label, ?techn, ?descr, ?sprite, ?tags, $link)`: Defines a component within a container.
+  - `Rel(from, to, label, ?techn, ?descr, ?sprite, ?tags, $link)`: Defines a relationship between components.
+
+- **Dynamic Diagram (C4Dynamic)**:
+  - `RelIndex(index, from, to, label, ?tags, $link)`: Defines a relationship with an index.
+  - `BiRel(from, to, label, ?techn, ?descr, ?sprite, ?tags, $link)`: Defines a bidirectional relationship.
+
+- **Deployment Diagram (C4Deployment)**:
+  - `Deployment_Node(alias, label, ?type, ?descr, ?sprite, ?tags, $link)`: Defines a deployment node.
+  - `Node(alias, label, ?type, ?descr, ?sprite, ?tags, $link)`: Defines a node within a deployment node.
+
+#### Common Patterns and Examples
+- **System Context Diagram**:
+  ```mermaid
+  mermaid
+  C4Context
+  Person(user, "User", "A user of the system")
+  System(system, "System", "The main system")
+  Rel(user, system, "Uses", "HTTPS")
+  ```
+
+- **Container Diagram**:
+  ```mermaid
+  mermaid
+  C4Container
+  System(system, "System", "The main system")
+  Container(container1, "Container 1", "Technology", "Description of container 1")
+  Rel(system, container1, "Uses", "HTTPS")
+  ```
+
+- **Component Diagram**:
+  ```mermaid
+  mermaid
+  C4Component
+  Container(container1, "Container 1", "Technology", "Description of container 1")
+  Component(component1, "Component 1", "Technology", "Description of component 1")
+  Rel(container1, component1, "Uses", "HTTPS")
+  ```
+
+- **Dynamic Diagram**:
+  ```mermaid
+  mermaid
+  C4Dynamic
+  RelIndex(1, user, system, "Step 1", "HTTPS")
+  BiRel(user, system, "Bidirectional Step", "HTTPS")
+  ```
+
+- **Deployment Diagram**:
+  ```mermaid
+  mermaid
+  C4Deployment
+  Deployment_Node(deployNode, "Deployment Node", "Type", "Description of deployment node")
+  Node(node1, "Node 1", "Type", "Description of node 1")
+  Rel(deployNode, node1, "Deploys", "HTTPS")
+  ```
+
+#### Important Rules and Constraints
+- **Fixed Style**: C4 diagrams have a fixed style, including CSS colors.
+- **Manual Layout**: The layout is not fully automated; adjust the position by changing the order of statements.
+- **Unsupported Features**: Features like `sprite`, `tags`, `link`, and legends are not supported in the short term.
+- **Relationship Types**: Use specific relationship types (`Rel_U`, `Rel_D`, etc.) to define direction.
+- **Style Updates**: Use `UpdateElementStyle` and `UpdateRelStyle` to update styles, including text label offsets.
+- **Layout Configuration**: Adjust layout using `UpdateLayoutConfig` with parameters like `c4ShapeInRow` and `c4BoundaryInRow`.
+
+This summary provides a concise overview of the Mermaid.js syntax rules for C4 diagrams, focusing on key commands, common patterns, and important constraints.

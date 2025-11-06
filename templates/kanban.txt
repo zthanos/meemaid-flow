@@ -1,0 +1,70 @@
+ ### Summary of Mermaid.js Syntax Rules for Kanban Diagrams
+
+#### Overview
+Mermaid's Kanban diagram allows users to visually represent tasks moving through various stages of a workflow. The syntax is designed to be intuitive and flexible, making it easy to create customized visualizations.
+
+#### Basic Structure
+- **Kanban Diagram Initialization**: Begin with the keyword `kanban`.
+- **Defining Columns**: Each column is defined using a unique identifier followed by its title within square brackets:
+  ```mermaid
+  kanban
+  id1[Todo]
+  id2[In Progress]
+  id3[Done]
+  ```
+- **Adding Tasks**: Tasks are listed under their respective columns with an indentation. Each task has a unique identifier and description enclosed in square brackets:
+  ```mermaid
+  docs[Create Documentation]
+  bugs[Fix Bugs]
+  review[Code Review]
+  ```
+
+#### Key Commands and Keywords
+- **Columns**: Defined using `columnId[Column Title]`.
+- **Tasks**: Listed under columns with indentation, defined as `taskId[Task Description]`.
+- **Metadata**: Optional information can be added to tasks using `@{ ... }` syntax. Supported keys include:
+  - `assigned`: Specifies the task assignee.
+  - `ticket`: Links the task to a ticket or issue number.
+  - `priority`: Indicates the urgency of the task (e.g., 'Very High', 'High', 'Low', 'Very Low').
+
+#### Configuration Options
+- **Customization**: Global settings can be configured at the beginning of the markdown file using YAML:
+  ```yaml
+  ---
+  config:
+    kanban:
+      ticketBaseUrl: 'https://yourproject.atlassian.net/browse/#TICKET#'
+  ---
+  ```
+- **Ticket Linking**: The `ticketBaseUrl` allows for linking tasks to external systems by replacing `#TICKET#` with the task's ticket number.
+
+#### Examples and Patterns
+- **Basic Kanban Diagram**:
+  ```mermaid
+  kanban
+  todo[Todo]
+    docs[Create Documentation]
+    review[Code Review]
+  inProgress[In Progress]
+    bugs[Fix Bugs]
+  done[Done]
+  ```
+- **Task with Metadata**:
+  ```mermaid
+  kanban
+  todo[Todo]
+    docs[@{assigned: JohnDoe} Create Documentation]
+    review[Code Review]
+  inProgress[In Progress]
+    bugs[Fix Bugs]
+  done[Done]
+  ```
+
+#### Important Rules and Constraints
+- **Unique Identifiers**: Each column and task must have a unique identifier.
+- **Proper Indentation**: Tasks must be indented under their respective columns to maintain the correct structure.
+- **Metadata Usage**: Metadata can enhance task details but does not affect the basic diagram structure.
+- **Configuration Block**: The configuration block allows for global settings customization, enhancing the functionality of linked tickets.
+
+#### Conclusion
+Mermaid's Kanban syntax is straightforward and powerful, enabling users to create detailed workflow visualizations easily. By following these guidelines—ensuring unique identifiers, proper indentation, and utilizing metadata and configuration options—users can build comprehensive and customized Kanban boards that effectively map out their project workflows.

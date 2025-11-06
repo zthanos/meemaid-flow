@@ -1,0 +1,53 @@
+ ### Summary of Mermaid.js MindMap Syntax Rules for DiagramType.MINDMAP Diagrams
+
+#### Basic Structure
+- **Indentation**: Sets the hierarchy levels in the mind map. The root node is at the top level and subsequent nodes are indented to show their relationship.
+- **Shapes**: Nodes can be displayed using various shapes like square, rounded square, circle, hexagon, etc., with a syntax similar to flowchart nodes.
+- **Icons and Classes**: Icons can be added using `::icon()` syntax. Custom classes can be applied for styling (e.g., changing background color or font size).
+
+#### Key Commands and Keywords
+- **Indentation**: Determines the hierarchy level of each node.
+- **Shapes**: Specifies the visual representation of nodes (`Square`, `Rounded square`, etc.).
+- **::icon()**: Adds icons to nodes using a specific syntax.
+- **Classes**: Applies custom CSS classes for styling (e.g., changing text color, background color).
+
+#### Common Patterns and Examples
+1. **Basic MindMap Example**:
+    ```mermaid
+    mindmap
+    Root
+    A
+    B
+    C
+    ```
+2. **MindMap with Shapes**:
+    ```mermaid
+    mindmap
+    Root
+    A::[#FF0000]Square
+    B::[#00FF00]Rounded square
+    C::[#0000FF]Circle
+    ```
+3. **MindMap with Icons and Classes**:
+    ```mermaid
+    mindmap
+    Root::[#FFFFFF]((mindmap is a long thing))::icon-color=red
+    A::[#FFFFFF]::icon::material-icons lock
+    B::[#FFFFFF]::icon::font-awesome leaf
+    C::[#FFFFFF]::icon::octicons(geo)
+    ```
+4. **MindMap with Markdown Strings**:
+    ```mermaid
+    mindmap
+    Root
+    A**Bold Text**
+    B*Italic Text*
+    ```
+
+#### Important Rules and Constraints
+- **Indentation Clarity**: Ensure clear indentation to define the hierarchy correctly; otherwise, Mermaid will attempt to infer the parent-child relationships.
+- **Experimental Feature**: MindMaps are experimental, meaning their syntax and properties can change in future releases.
+- **Async Rendering**: For versions 9.4.0 and above, mind maps use lazy loading for rendering, which simplifies integration but may require updates based on future changes.
+- **Layouts**: Supports a Tidy Tree layout for better organization of the mind map. Configuration instructions are available in MermaidChart.com.
+
+This summary provides a concise overview of the syntax and features supported by Mermaid.js for creating MindMap diagrams, including basic structure, shape customization, icon integration, class application, and handling hierarchy through indentation.

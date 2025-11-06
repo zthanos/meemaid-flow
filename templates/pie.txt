@@ -1,0 +1,48 @@
+ ### Summary of Mermaid.js Pie Chart Syntax for DiagramType.PIE Diagrams
+
+#### Basic Structure and Commands
+- **Start the diagram with `pie` keyword.**
+- **Optional**: Use `showData` to display data values after labels.
+- **Optional**: Use `title` followed by a string value to add a title to the pie chart.
+- **Labels for each slice are enclosed in double quotes (`" "`)**.
+- **Each label is followed by a colon (`:`) and a positive numeric value** (supported up to two decimal places).
+
+#### Key Commands and Keywords
+1. **pie**: Initiates the pie chart diagram.
+2. **showData**: Optionally displays data values next to their corresponding labels.
+3. **title [titlevalue]**: Adds a title to the pie chart, enclosed in double quotes (`" "`).
+4. **[label] : [dataValue]**: Defines each slice of the pie chart with a label and its associated value.
+
+#### Common Patterns and Examples
+- Basic syntax for creating a pie chart:
+  ```mermaid
+  pie
+    title My Pie Chart
+    "Slice 1" : 30
+    "Slice 2" : 55
+    "Slice 3" : 15
+  ```
+- Including `showData` to display values:
+  ```mermaid
+  pie
+    showData
+    title My Pie Chart
+    "Slice 1" : 30.45
+    "Slice 2" : 55.12
+    "Slice 3" : 14.43
+  ```
+- Adding a title to the chart:
+  ```mermaid
+  pie
+    title My Pie Chart
+    "Slice 1" : 30.45
+    "Slice 2" : 55.12
+    "Slice 3" : 14.43
+  ```
+
+#### Important Rules and Constraints
+- **Data Values Must Be Positive**: All values must be positive numbers greater than zero. Negative values are not allowed, as they will result in an error.
+- **Label Order**: Pie slices are ordered clockwise based on the order of labels provided.
+- **Optional Parameters**: `showData` and `title` are optional but can enhance the readability and clarity of the chart.
+
+This summary provides a clear understanding of how to create pie charts using Mermaid.js, including basic syntax, key commands, common usage patterns, and important constraints.

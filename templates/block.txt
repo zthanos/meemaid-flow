@@ -1,0 +1,72 @@
+ ### Summary of Mermaid.js Block Diagram Syntax Rules
+
+#### Basic Structure
+- **Blocks**: Represent components or entities using text labels.
+- **Connectors**: Show relationships between blocks using arrows (`-->` or `---`).
+- **Columns**: Arrange blocks into multiple columns for complex layouts.
+
+#### Key Commands and Keywords
+- **Definition and Purpose**: Block diagrams are used to represent complex systems, processes, or architectures visually.
+- **Basic Syntax**: Blocks can be defined with simple text labels (`A`, `B`, `C`).
+- **Multi-Column Diagrams**: Specify the number of columns using `column` keyword followed by a number.
+
+#### Common Patterns and Examples
+1. **Simple Block Diagram**:
+   ```mermaid
+   graph TD;
+      A-->B;
+      B-->C;
+   ```
+2. **Multi-Column Diagram**:
+   ```mermaid
+   graph TD
+      A[Block 1] -->|Link Label| B[Block 2]
+      C[Block 3] --> D[Block 4]
+      E[Block 5] --> F[Block 6]
+   ```
+3. **Advanced Block Configuration**:
+   - **Setting Block Widths**: Use `span` to make blocks span multiple columns.
+     ```mermaid
+     graph TD
+        A[Block A] -->|Link| B[Block B]
+        C[Block C] --> D[Block D]
+        E[Block E] --> F[Block F]
+     ```
+   - **Composite Blocks**: Define nested blocks using parentheses.
+     ```mermaid
+     graph TD
+        A[Parent Block] -->|Link| B[Child Block]
+     ```
+4. **Connecting Blocks with Edges**:
+   - **Basic Linking**: Use `-->` or `---` to connect blocks.
+     ```mermaid
+     graph TD
+        A --> B
+     ```
+   - **Text on Links**: Add labels to connectors for clarity.
+     ```mermaid
+     graph TD
+        A -->|Label| B
+     ```
+5. **Styling and Customization**:
+   - **Individual Block Styling**: Use `style` keyword with CSS properties.
+     ```mermaid
+     graph TD
+        style A fill:#f9d,stroke:#333,stroke-width:2px
+        A --> B
+     ```
+   - **Class Styling**: Define classes and apply them to blocks for consistent styling.
+     ```mermaid
+     graph TD
+        classDef blue fill:#add8e6,stroke:#000,stroke-width:2px;
+        style A blue;
+        B --> C
+     ```
+
+#### Important Rules and Constraints
+- **Syntax Errors**: Ensure correct linking syntax (`-->` or `---`) and proper formatting.
+- **Layout Control**: Mermaid gives full control over block positioning, ensuring layouts are intuitive and user-friendly.
+- **Complex Diagrams**: Break down complex diagrams into smaller, manageable components for clarity and ease of management.
+
+#### Conclusion
+Mermaid's block diagram syntax provides a powerful way to represent complex systems visually, offering flexibility in layout, styling, and customization. By understanding the basic structure, key commands, common patterns, and adhering to important rules, users can create informative and effective diagrams tailored to various applications across different fields.

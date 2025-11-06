@@ -1,0 +1,48 @@
+ ### Summary of Mermaid.js Treemap Diagram Syntax
+
+#### Introduction
+- **Purpose**: Displays hierarchical data as nested rectangles to show proportions between categories and subcategories.
+- **Use Cases**: Ideal for visualizing hierarchical data structures, comparing proportions, displaying large amounts of hierarchical data in a limited space, and identifying patterns and outliers.
+
+#### Basic Structure
+- **Node Definition**:
+  - **Section/Parent Nodes**: Defined using quoted text (e.g., `"Section Name"`).
+  - **Leaf Nodes with Values**: Defined using quoted text followed by a colon and value (e.g., `"Leaf Name": value`).
+  - **Hierarchy**: Created using indentation (spaces or tabs).
+- **Styling**: Nodes can be styled using the `:::class` syntax. Custom styles can be defined using `classDef`.
+
+#### Examples
+- **Basic Treemap**: Demonstrates basic hierarchical structure.
+- **Hierarchical Treemap**: Illustrates a more complex hierarchy with values and styling.
+- **Treemap with Styling**: Shows how to apply custom styles and configurations.
+
+#### Configuration Options
+- **Styling and Configuration**:
+  - Use `classDef` for defining custom node styles.
+  - Customize colors using theme configuration.
+  - Adjust padding around the diagram using `diagramPadding`.
+- **Configuration Options**:
+  - `useMaxWidth`: Scales diagram width with available space (default: true).
+  - `padding`: Internal padding between nodes (default: 10).
+  - `diagramPadding`: Padding around the entire diagram (default: 8).
+  - `showValues`: Whether to show values in the treemap (default: true).
+  - `nodeWidth` and `nodeHeight`: Width and height of nodes (default: 100 and 40 respectively).
+  - `borderWidth`: Width of borders (default: 1).
+  - `valueFontSize` and `labelFontSize`: Font sizes for values and labels (default: 12 and 14 respectively).
+- **Value Formatting**: Uses D3's format specifiers to control value display, including common currency formats.
+
+#### Common Use Cases
+- Financial Data.
+- File System Analysis.
+- Population Demographics.
+- Product Hierarchies.
+- Organizational Structures.
+
+#### Limitations
+- Best suited for data with a natural hierarchy.
+- Small values and deep hierarchies can be challenging to represent clearly.
+
+#### Related Diagrams
+- **Alternatives**: Consider Pie Charts, Sunburst Diagrams (yet to be released in Mermaid), and Sankey Diagrams for alternative hierarchical visualizations.
+
+This summary provides a concise overview of the syntax and capabilities of Treemap diagrams in Mermaid.js, suitable for generating such diagrams with flexibility in data representation and customization options.
