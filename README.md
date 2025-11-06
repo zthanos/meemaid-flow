@@ -71,13 +71,14 @@ print(result.mermaid_code)
 ````python
 state = Diagram_ManagerState(
     user_prompt="""
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant S as Server
-  U->>S: login
-  S-->>U: token
-````
+    ```mermaid
+    sequenceDiagram
+      participant U as User
+      participant S as Server
+      U->>S: login
+      S-->>U: token
+   ```
+
 
 """,
 diagram_type="sequenceDiagram",
@@ -90,18 +91,18 @@ print(out.description)
 ````
 
 ### 2) Transform a Diagram
-```python
+````python
 state = Diagram_ManagerState(
     user_prompt="""
 Convert this to a C4 Container:
 
 ```mermaid
-sequenceDiagram
-  participant Client
-  participant API
-  Client->>API: GET /orders
-  API-->>Client: 200 OK
-````
+    sequenceDiagram
+      participant Client
+      participant API
+      Client->>API: GET /orders
+      API-->>Client: 200 OK
+    ```
 
 """,
 diagram_type="C4Container",
@@ -188,48 +189,6 @@ MIT License (see LICENSE file)
 
 ---
 
-## Publishing to PyPI
-
-1. **pyproject.toml** example:
-
-```toml
-[build-system]
-requires = ["setuptools>=68", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "mermaid-flow"
-version = "0.1.0"
-description = "Mermaid diagram agent: generate, describe, transform, validate."
-readme = "README.md"
-authors = [{ name = "Thanos Zikas" }]
-license = { text = "MIT" }
-requires-python = ">=3.9"
-dependencies = [
-  "langchain-openai>=0.1.0",
-  "langgraph>=0.2.0",
-  "beautifulsoup4>=4.12",
-  "requests>=2.31",
-]
-
-[project.urls]
-Homepage = "https://github.com/<your-org>/mermaid-flow"
-Issues = "https://github.com/<your-org>/mermaid-flow/issues"
-
-[project.scripts]
-mermaid-flow = "mermaid_flow.__main__:main"
-```
-
-2. **Build & Upload**
-
-```bash
-python -m pip install --upgrade build twine
-python -m build
-twine check dist/*
-twine upload dist/*
-```
-
----
 
 ### LLM Integration Notes
 
